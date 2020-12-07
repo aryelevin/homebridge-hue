@@ -25,6 +25,11 @@
         "minimum": 10,
         "maximum": 100
       },
+      "effects": {
+        "description": "Expose special effects (on supported lights) as separate services.  Default: true.",
+        "type": "boolean",
+        "default": true
+      },
       "excludeSensorTypes": {
 	      "description": "Sensor types to exclude.",
         "type": "array",
@@ -233,6 +238,10 @@
         },
         "lights",
         {
+          "key": "effects",
+          "condition": { "functionBody": "return model.lights" }
+        },
+        {
           "key": "nativeHomeKitLights",
           "condition": { "functionBody": "return model.lights" }
         },
@@ -255,7 +264,7 @@
         },
         {
           "key": "scenesAsSwitch",
-          "condition": { "functionBody": "return model.scenes" }
+          "condition": { "functionBody": "return model.groups && model.scenes" }
         },
         "linkButton",
         "schedules",
